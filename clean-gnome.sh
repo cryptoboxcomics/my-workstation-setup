@@ -7,12 +7,15 @@
 # In addition, this script has to be run as root. 
 
 # Remove all gnome packages
-pacman -Ry gnome gnome-extra gdm
+pacman -Rcns gnome gnome-extra gdm
 
 # Re-install NetworkManager
-pacman -Sy networkmanager
+pacman -Syu networkmanager
 systemctl enable NetworkManager
 systemctl start NetworkManager
+
+# Manually configure wifi if necessary
+nmtui
 
 # Shutdown and restart your system
 reboot
